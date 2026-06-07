@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock Chart</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Stock Chart</h1>
+      <p class="subtitle">Powered by Yahoo Finance</p>
+    </header>
+
+    <form id="stock-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="symbol">Ticker Symbol</label>
+          <input
+            type="text"
+            id="symbol"
+            name="symbol"
+            placeholder="e.g. AAPL"
+            maxlength="10"
+            autocomplete="off"
+            spellcheck="false"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="period">Duration</label>
+          <select id="period" name="period">
+            <option value="1d">1 Day</option>
+            <option value="5d">5 Days</option>
+            <option value="1mo">1 Month</option>
+            <option value="3mo">3 Months</option>
+            <option value="6mo">6 Months</option>
+            <option value="1y" selected>1 Year</option>
+            <option value="2y">2 Years</option>
+            <option value="5y">5 Years</option>
+            <option value="10y">10 Years</option>
+            <option value="ytd">Year to Date</option>
+            <option value="max">Max</option>
+          </select>
+        </div>
+        <div class="form-group form-group--btn">
+          <button type="submit" id="submit-btn">Show Chart</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="error-msg" class="error-msg hidden"></div>
+
+    <div id="spinner" class="spinner hidden">
+      <div class="spinner__ring"></div>
+      <span>Fetching data…</span>
+    </div>
+
+    <div id="charts-wrapper" class="hidden">
+      <div class="chart-header">
+        <h2 id="chart-title"></h2>
+        <span id="chart-meta"></span>
+      </div>
+      <div class="chart-card">
+        <canvas id="price-chart"></canvas>
+      </div>
+      <div class="chart-card chart-card--volume">
+        <canvas id="volume-chart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
